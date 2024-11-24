@@ -11,15 +11,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import BaseFile.BaseClass;
 
-public class POM extends BaseClass{
+public class POM extends BaseClass {
 
 	public POM(WebDriver driver) {
-		this.driver=driver;
-		this.jse=(JavascriptExecutor)this.driver;
+		this.driver = driver;
+		this.jse = (JavascriptExecutor) this.driver;
 		PageFactory.initElements(driver, this);
+
 	}
-	
-	
+
 	@FindBy(id = "input-firstname")
 	WebElement firstName;
 
@@ -31,30 +31,21 @@ public class POM extends BaseClass{
 
 	@FindBy(id = "input-password")
 	WebElement password;
-					 	
+
 	@FindBy(xpath = "//input[@name='agree']")
 	WebElement priPolicy;
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement clkContinueBtn;
-	
+
 	@FindBy(xpath = "//h1[text()='Your Account Has Been Created!']")
 	WebElement verify;
-	
-	
-	
+
 	@FindBy(linkText = "Continue")
 	WebElement clkContBtn;
-	
-	
+
 	@FindBy(linkText = "Logout")
 	WebElement clkLogoutBtn;
-	
-	
-	
-	
-	
-	
 
 	public void setFirstName(String fn) {
 		firstName.sendKeys(fn);
@@ -65,7 +56,7 @@ public class POM extends BaseClass{
 	}
 
 	public void setEmail(String em) {
-		
+
 		email.sendKeys(em);
 	}
 
@@ -73,10 +64,9 @@ public class POM extends BaseClass{
 		password.sendKeys(pswd);
 	}
 
-	
 	public void clkPriPolicy() {
-			
-		jse.executeScript("arguments[0].click()", priPolicy);	
+
+		jse.executeScript("arguments[0].click()", priPolicy);
 	}
 
 	public void clkContBtn() {
@@ -85,15 +75,14 @@ public class POM extends BaseClass{
 	}
 
 	public void verifyMessage(String exp) {
-		String act =verify.getText(); 
-			assertEquals(act, exp);
+		String act = verify.getText();
+		assertEquals(act, exp);
 	}
-	
-	
+
 	public void clkContBtnFinal() {
 		jse.executeScript("arguments[0].click()", clkContBtn);
 	}
-	
+
 	public void clkLogOutBtn() {
 
 		jse.executeScript("arguments[0].click()", clkLogoutBtn);
